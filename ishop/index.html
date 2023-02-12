@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>RB199</title>
+    <link href="assets/bootstrap.min.css" rel="stylesheet">
+    <script src="https://unpkg.com/react@15/dist/react.js"></script> 
+    <script src="https://unpkg.com/react-dom@15/dist/react-dom.js"></script> 
+  </head>
+  <body>
+    
+<div class="col-lg-8 mx-auto p-3 py-md-5">
+  <header class="d-flex align-items-center pb-3 mb-5 border-bottom">
+    <a href="/" class="d-flex align-items-center text-dark text-decoration-none">
+      <svg xmlns="http://www.w3.org/2000/svg" version="1.1"  width="40" height="32" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs" width="512" height="512" x="0" y="0" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512" xml:space="preserve" class=""><g><path d="M396.63 282.744c-9.632-18.822-23.181-35.744-39.462-49.354v-20.484c0-24.442-8.734-46.884-23.247-64.378-19.608 7.378-39.276 9.451-55.141 9.451-15.929 0-27.072-2.075-29.144-2.491-12.352-2.479-22.206-12.002-25.104-24.261-.245-1.029-1.366-5.979-2.324-13.565-39.215 13.923-67.372 51.358-67.372 95.245v20.485c-16.281 13.609-29.832 30.531-39.463 49.353-11.418 22.311-17.208 46.41-17.208 71.623C98.164 441.286 168.969 512 255.999 512s157.835-70.714 157.835-157.633c0-25.216-5.788-49.312-17.204-71.623zM376.351.838C376.284.827 368.682 0 357.713 0c-25.39 0-59.71 4.05-79.031 23.343-16.288 16.265-22.678 37.469-24.709 56.201a141.816 141.816 0 0 0-.797 16.178c.04 6.171.451 11.685.95 16.157.805 7.228 1.833 11.74 1.872 11.906.378.073 9.411 1.856 22.78 1.856 7.33 0 15.674-.541 24.376-2.114 6.898-1.247 14.023-3.149 21.051-5.947 5.412-2.154 10.764-4.836 15.914-8.17a83.78 83.78 0 0 0 13.69-11.046C390.958 61.271 376.503 1.437 376.351.838z" fill="#000000" data-original="#000000" class=""></path></g></svg>
+      <span class="fs-4">iShop</span>
+    </a>
+  </header>
+
+
+    <main>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#ID</th>
+            <th scope="col">Thumb</th>
+            <th scope="col">Title</th>
+            <th scope="col">Price</th>
+            <th scope="col">In stock</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row" class="align-middle">1</th>
+            <td><img src="https://content2.onliner.by/catalog/device/main/403bd56b75b8bdacb5a250150eca6831.jpeg" width="40"></td>
+            <td class="align-middle">Huawei Mate 50 Pro</td>
+            <td class="align-middle">3300</td>
+            <td class="align-middle">2</td>
+          </tr>
+        </tbody>
+      </table>
+    </main>
+
+
+  
+  
+  
+  <footer class="pt-5 my-5 text-muted border-top">
+    Created by the Bootstrap team &middot; &copy; 2021
+  </footer>
+
+</div>
+
+
+  <script src="assets/bootstrap.bundle.min.js"></script>
+  <script src="components/ProdWrap.js"></script>
+  <script src="components/ProdRow.js"></script>
+  <script src="components/TableHead.js"></script>
+  <script>
+
+    var shopName='iShop';
+    
+    var prods=[ 
+      {
+        id: 1,
+        title:'Huawei Mate 50 Pro',
+        price:3300,
+        img:'https://content2.onliner.by/catalog/device/main/403bd56b75b8bdacb5a250150eca6831.jpeg',
+        stock: 2
+      }, 
+      {
+        id: 2,
+        title:'HONOR 70',
+        price:1350,
+        img:'https://content2.onliner.by/catalog/device/main/5238e392211ecea0f6e2747bec5c8b4e.jpeg',
+        stock: 1
+      }, 
+
+    ];
+
+    ReactDOM.render(
+      React.createElement(ProdWrap,{shopName:shopName,prods:prods}), 
+      document.querySelector('main')
+    );
+
+  </script>
+
+      
+  </body>
+</html>
