@@ -1,0 +1,15 @@
+#root section .row {
+    display: flex;
+    align-items: center;
+}
+#root section .row input[type="text"]{
+    margin: 0 1rem
+}
+
+#root ul.list {
+    height: 150px;
+    overflow-y: auto;
+    width: 240px;
+    list-style-type: none ;
+    padding-left: 35px;
+}
