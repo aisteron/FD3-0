@@ -1,0 +1,16 @@
+table {
+    border-collapse: collapse;
+}
+table thead tr th {
+    border: 1px solid #333;
+    background-color: #ededed;
+    padding: 0.3rem;
+}
+table tr td {
+    border: 1px solid #333;
+    padding: 0.3rem;
+}
+
+table tr.selected {
+    background-color: #ff7f50;
+}

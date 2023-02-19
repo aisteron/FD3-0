@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>iShop2</title>
+
+    <link href="assets/index.css" rel="stylesheet">
+    <script src="https://unpkg.com/react@15/dist/react.js"></script> 
+    <script src="https://unpkg.com/react-dom@15/dist/react-dom.js"></script> 
+</head>
+<body>
+    <div id="root"></div>
+
+    <script src="components/Shop.js"></script>
+    <script src="components/Product.js"></script>
+
+    <script>
+        var list = [
+            {
+                id: 1,    
+                name: 'product1',
+                price: 10,
+                url: 'https://ishop2.net/product1',
+                qty: 10
+            },
+            {
+                id:2,    
+                name: 'product2',
+                price: 20,
+                url: 'https://ishop2.net/product2',
+                qty: 20
+            },
+            {
+                id: 3,
+                name: 'product3',
+                price: 30,
+                url: 'https://ishop2.net/product3',
+                qty: 30
+            },
+        ];
+
+        ReactDOM.render(
+        React.createElement(Shop,{list:list}), 
+            document.querySelector('#root')
+        );
+    </script>
+    
+</body>
+</html>
