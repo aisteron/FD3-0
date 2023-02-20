@@ -12,14 +12,13 @@ var Product = React.createClass({
     },
 
     select: function(event){
-        if(event.target.nodeName == 'BUTTON') return
-        let id = +event.target.closest('tr').dataset.id
-        this.props.cbSelected(id);
+        event.stopPropagation();
+        this.props.cbSelected(this.props.id);
     },
 
     delete: function(event){
-        let id = +event.target.closest('tr').dataset.id
-        window.confirm("Are you sure?") && this.props.cbDeleted(id)
+        event.stopPropagation();
+        window.confirm("Are you sure?") && this.props.cbDeleted(this.props.id)
         
     },
   
