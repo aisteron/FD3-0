@@ -1,0 +1,50 @@
+table {
+  border-collapse: collapse;
+  margin-bottom: 1rem;
+}
+table thead tr th {
+  border: 1px solid #333;
+  background-color: #ededed;
+  padding: 0.3rem;
+}
+table tr td {
+  border: 1px solid #333;
+  padding: 0.3rem;
+}
+
+table tr.selected {
+  background-color: #ff7f50;
+}
+table tr td button:nth-of-type(1){
+  margin-right: 5px;
+}
+
+.fields{
+  width: 467px;
+  background-color: #eee;
+  padding: 5px;
+  padding-bottom: 12px;
+  margin-top: 10px;
+  margin-bottom: 1rem;
+}
+form .row {
+  margin-bottom: 10px;
+}
+form .row label {
+  width: 230px;
+  justify-content: space-between;
+  display: flex;
+  align-items:center ;
+}
+
+form .row input {
+  width: 150px;
+  padding: 3px
+}
+form .row:last-of-type{
+  margin-bottom: 20px;
+}
+
+form button:first-of-type {
+  margin-right: 10px;
+}
