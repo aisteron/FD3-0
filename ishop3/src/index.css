@@ -48,3 +48,16 @@ form .row:last-of-type{
 form button:first-of-type {
   margin-right: 10px;
 }
+.edit .row{
+  margin-bottom: 1rem;
+}
+.edit .row i {
+  font-size: 11px;
+  color: red;
+  font-style: normal;
+  padding-left: 1rem;
+}
+
+button.save, button.add {
+  margin-right: 10px;
+}

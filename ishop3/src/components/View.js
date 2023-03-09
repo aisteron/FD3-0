@@ -1,14 +1,21 @@
-export default function View({products, state}){
-  
-  if(!state.selected) return null
-  if(state.selected === state.edited) return null
+import { Component } from "react";
 
-  let product = products.filter(el => state.selected === el.id)[0]
+class View extends Component{
+  render(){
+    let selected = this.props.state.selected
+    
+    if(selected){
+      const {name, price, qty} = this.props.state.goods.products.filter(el => el.id === selected)[0]
 
-  return(
-    <>
-      <h3>{product.name}</h3>
-      <p>Price: <b>{product.price}</b></p>
-    </>
-  )
+      return(
+      <div className="view">
+        <h3>{name}</h3>
+        <p>Price: {price}</p>
+        <p>Qty: {qty}</p>
+      </div>
+      )
+    }
+  }
 }
+
+export default View;
