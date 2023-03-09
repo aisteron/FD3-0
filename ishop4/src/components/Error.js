@@ -5,18 +5,12 @@ class Error extends Component{
   render(){
     let state = this.props.state
     let name = this.props.name
-
-    // if(state.errors){
-    //   let res = state.errors[name]
-    //   if(res.length){
-    //     return(
-    //       <span className="error">{state.errors[name]}</span>
-    //     )
-    //   }
-    // }
-
-    console.log(state.errors)
-    return ''
+    
+    let res = state.errors.filter(el => Object.keys(el)[0] === name)
+    
+    return (
+      res.length ? <i>{Object.values(res[0])}</i>: ''
+    )
     
   }
 }

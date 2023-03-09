@@ -4,7 +4,8 @@ class ListItem extends Component{
 
   select = event =>{
     event.stopPropagation();
-    this.props.cbSelected(this.props.product.id)
+    !this.props.state.editing && this.props.cbSelected(this.props.product.id)
+    
   }
   
   edit = event => {
@@ -16,6 +17,9 @@ class ListItem extends Component{
     const {name,price,url,qty,id} = this.props.product
     let selected = this.props.state.selected
     let edited = this.props.state.edited
+    let editing = this.props.state.editing
+
+
     
     return(
       <tr 
@@ -26,8 +30,8 @@ class ListItem extends Component{
         <td>{url}</td>
         <td>{qty}</td>
         <td>
-          <button className="edit" onClick={this.edit}>Edit</button>
-          <button className="delete">Delete</button>
+          <button className="edit" onClick={this.edit} disabled={editing}>Edit</button>
+          <button className="delete" disabled={editing}>Delete</button>
         </td>
       </tr>
     )

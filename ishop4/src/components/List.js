@@ -9,16 +9,25 @@ class List extends Component {
   state = {
     goods: this.props.goods,
     selected: null,
-    edited: null
+    edited: null,
+    editing: false
   }
 
-  selected = (id) =>{
-    this.setState({selected: id, edited: null})
+  selected = id => this.setState({selected: id, edited: null})
+
+  edited = id => this.setState({selected: null, edited: id})
+
+  editing = (status, hide) => {
+    this.setState({editing: status})
+    hide && this.setState({edited: null})
   }
 
-  edited = id => {
-    this.setState({selected: null, edited: id})
+  save = goods => this.setState({editing:false, goods: goods})
+
+  getProd(){
+    return this.state.goods.products.filter(el => el.id === this.state.edited)[0]
   }
+
   
   render(){
     console.log(this.state)
@@ -36,7 +45,7 @@ class List extends Component {
             </tr>
           </thead>
           <tbody>
-            { this.props.goods.products.map(product => 
+            { this.state.goods.products.map(product => 
             <ListItem 
               product={product} 
               key={product.id}
@@ -49,7 +58,11 @@ class List extends Component {
         
         <button>New Product</button>
         <View state={this.state}/>
-        <Fields state={this.state}/>
+        
+        {this.state.edited && (
+          <Fields prod={this.getProd()} cbEditing={this.editing}  cbSave={this.save}/>
+        )}
+        
       </>
     )
     
