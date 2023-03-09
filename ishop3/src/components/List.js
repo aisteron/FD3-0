@@ -28,14 +28,10 @@ class List extends Component {
   
   delete = id => {
     let res = this.state.goods.products.filter(el => el.id !== id)
-    this.setState({goods:{products: res}, selected: null})
+    this.setState({goods:{products: res}, selected: null, edited: null, new: false})
   }
 
-  getProd(){
-    return this.state.goods.products.filter(el => el.id === this.state.edited)[0]
-  }
-
-  
+   
   render(){
     console.log(this.state)
    
