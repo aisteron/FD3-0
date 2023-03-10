@@ -5,35 +5,40 @@ class Fields extends Component{
 
   state = {
     errors:[],
-    prod: this.getProd(),
-    new: false
+    prod: this.props.prod,
+    new: false,
+    edited: null
   }  
 
-  // componentDidMount(){
-  //   console.log(this.props)
-  //   this.props.state.new && this.setState({new: true})
-    
-  // }
-
   componentDidUpdate(prevProps){
-    prevProps.state.edited !== this.props.state.edited
-    && this.setState({prod: this.getProd()})
+    
+    console.log('• state: ',this.state)
+    console.log('○ prevProps: ', prevProps)
+    console.log('○ this.props:', this.props)
 
-    prevProps.state.new !== this.props.state.new
-    && (this.setState({
-      new: !this.state.new,
-      errors: [
-        {name: "Product name can not be empty"},
-        {price: "Price can not be empty"},
-        {url: "Url can not be empty"},
-        {qty: "Qty can not be empty"},
-      ]
-    }))
+    if(prevProps.edited !== this.props.edited){
+      this.setState({prod: this.props.prod})
+    }
+    
+    
+    if(!prevProps.new && this.props.new){
 
-  }
+       this.setState(
+        { new: true,
+          errors: [
+          {name: "Product name can not be empty"},
+          {price: "Price can not be empty"},
+          {url: "Url can not be empty"},
+          {qty: "Qty can not be empty"},
+        ]}
+      ) 
+    }
 
-  getProd(){
-    return this.props.state.goods.products.filter(el => el.id === this.props.state.edited)[0]
+    
+      
+
+
+
   }
 
 
@@ -123,35 +128,19 @@ class Fields extends Component{
   }
 
   save = () => {
-
-
-    let p = JSON.parse(JSON.stringify(this.props.state.goods.products))
-    let arr = p.filter(el => el.id !== this.state.prod.id)
-    arr.push(this.state.prod)
-    arr.sort((a,b) => a.id - b.id)
-    this.props.cbSave({products: arr})
-    
-  }
-
-  add = () => {
-    let p = JSON.parse(JSON.stringify(this.props.state.goods.products))
-    let id = Math.max(...p.map(el => el.id)) + 1
-    let prod = {id: id, ...this.state.prod}
-    p.push(prod)
-    this.setState({prod: undefined})
-    this.props.cbSave({products: p})
+    console.log('save')
+    this.setState({prod: undefined}, this.props.cbSave(this.state.prod))
   }
 
   cancel = () => {
-    this.setState({prod: undefined})
-    this.props.cbEditing(false, true)
+    console.log('cancel')
+    this.setState({prod: undefined, errors:[]}, this.props.cbEditing(false, true))
+   
   }  
 
   render(){
     
-    if(this.state.prod === undefined && !this.props.state.new) return ''
- 
-    console.log(this.state)
+    if(this.state.prod === undefined && this.props.new === false) return ''
 
     let id = null
     let name = ''
@@ -171,7 +160,7 @@ class Fields extends Component{
 
     return(
       <>
-        {id ? <h3>Edit existing product</h3>: <h3>Create new product</h3>}
+        {id ? <h3>Edit existing product</h3> : <h3>Create new product</h3>}
         
         <div className="edit">
           <div className="row">{id && `ID: ${id}`}</div>
@@ -214,8 +203,8 @@ class Fields extends Component{
           </div>
         </div>
         <div className="buttons">
-          {this.state.new 
-          ? <button className="add" disabled={this.state.errors.length||!this.state.prod} onClick={this.add}>Add</button>
+          {this.props.new 
+          ? <button className="add" disabled={this.state.errors.length||!this.state.prod} onClick={this.save}>Add</button>
           : <button className="save" disabled={this.state.errors.length} onClick={this.save}>Save</button>
           }
           <button className="cancel" onClick={this.cancel}>Cancel</button>

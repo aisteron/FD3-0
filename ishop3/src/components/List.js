@@ -23,12 +23,47 @@ class List extends Component {
     hide && this.setState({edited: null, new: false})
   }
 
-  save = goods => this.setState({editing:false, goods: goods})
+  save = prod => {
+    
+
+    if(prod.id){
+      let arr = this.state.goods.products.filter(el => el.id !== prod.id)
+      arr.push(prod)
+      arr.sort((a,b) => a.id - b.id)
+      this.setState({
+        editing:false, 
+        goods: {products: arr},
+        new: false,
+        selected: prod.id
+      })
+    } else {
+      let ids = this.state.goods.products.map(el => el.id)
+      let nextId = Math.max(...ids) + 1
+      prod = {id: nextId, ...prod}
+
+      let products = [...this.state.goods.products]
+      products.push(prod)
+
+
+      this.setState({
+        editing:false, 
+        goods: {products: products},
+        new: false,
+        selected: prod.id
+      })
+
+    }
+    
+  }
   new = _ => this.setState({new:!this.state.new, edited:null, editing: true, selected: null})
   
   delete = id => {
     let res = this.state.goods.products.filter(el => el.id !== id)
     this.setState({goods:{products: res}, selected: null, edited: null, new: false})
+  }
+
+  getProd(type){
+    return this.state.goods.products.filter(el => el.id === this.state[type])[0]
   }
 
    
@@ -61,8 +96,8 @@ class List extends Component {
         </table>
         
         <button disabled={this.state.editing} onClick={this.new}>New Product</button>
-        <View state={this.state}/>
-        <Fields state={this.state} cbEditing={this.editing}  cbSave={this.save}/>
+        <View prod={this.getProd('selected')}/>
+        <Fields prod={this.getProd('edited')} cbEditing={this.editing}  cbSave={this.save} new={this.state.new} edited={this.state.edited}/>
         
         
       </>
