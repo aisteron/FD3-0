@@ -34,7 +34,8 @@ class List extends Component {
         editing:false, 
         goods: {products: arr},
         new: false,
-        selected: prod.id
+        selected: prod.id,
+        edited: null
       })
     } else {
       let ids = this.state.goods.products.map(el => el.id)

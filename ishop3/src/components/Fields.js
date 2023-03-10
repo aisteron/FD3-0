@@ -155,7 +155,6 @@ class Fields extends Component{
       url = this.state.prod.url
       qty = this.state.prod.qty
     }
-
     
 
     return(
