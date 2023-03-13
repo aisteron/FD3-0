@@ -1,0 +1,11 @@
+.App {
+  width: 330px;
+  margin: 2rem auto
+}
+.App div {
+  border: 2px solid transparent;
+  margin: 3px;
+}
+.App p {
+  margin: 3px
+}
