@@ -1,0 +1,48 @@
+body{
+  background-color: #f0f0f0;
+}
+#root{
+  width: 40%;
+  margin: 10vh auto;
+  background-color: #fff;
+  padding: 1rem;
+  
+}
+
+td.active{
+  background-color: green;
+  color: #fff
+}
+
+td.blocked{
+  background-color: red;
+  color: #fff
+}
+
+table{
+  border-collapse: collapse;
+  margin: 1rem 0
+}
+table tr td {
+  padding: 3px;
+  border: 1px solid #ccc;
+}
+table tr td input{
+  width: 80px
+}
+table thead {
+  font-weight: bold;
+  background-color: #ccc;
+}
+table tbody tr:nth-of-type(2n){
+  background-color: #ebebeb;
+}
+
+.filter{
+  display: flex;
+  gap: 1rem
+}
+
+td.actions button:first-of-type{
+  margin-right: 4px;
+}

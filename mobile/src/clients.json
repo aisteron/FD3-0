@@ -1,0 +1,30 @@
+[
+  {
+    "id": 0,
+    "surname": "Иванов",
+    "name": "Иван",
+    "thirdname": "Иванович",
+    "balance": 200
+  },
+  {
+    "id": 1,
+    "surname": "Сидоров",
+    "name": "Сидор",
+    "thirdname": "Сидорович",
+    "balance": 250
+  },
+  {
+    "id": 2,
+    "surname": "Петров",
+    "name": "Петр",
+    "thirdname": "Петрович",
+    "balance": 180
+  },
+  {
+    "id": 3,
+    "surname": "Григорьев",
+    "name": "Григорий",
+    "thirdname": "Григорьевич",
+    "balance": -220
+  }
+]
