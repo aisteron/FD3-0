@@ -1,11 +1,12 @@
-.App {
-  width: 330px;
-  margin: 2rem auto
+#root{
+  margin: 2rem auto;
+  width: 400px;
+
 }
-.App div {
-  border: 2px solid transparent;
-  margin: 3px;
+#root div {
+  margin: 2px
 }
-.App p {
-  margin: 3px
+
+.doubleButton{
+  margin: 2rem 0 !important
 }
