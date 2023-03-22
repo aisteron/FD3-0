@@ -25,7 +25,7 @@ export default class Add extends Component{
       name: this.refName.current.value,
       surname: this.refSurname.current.value,
       thirdname: this.refThirdname.current.value,
-      balance: this.refBalance.current.value,
+      balance: +this.refBalance.current.value,
       color: colorArray[(Math.random() * colorArray.length) | 0]
     }
     myEvents.emit('add', obj)

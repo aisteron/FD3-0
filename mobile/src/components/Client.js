@@ -4,7 +4,6 @@ import { createRef } from "react";
 
 export default class Client extends PureComponent{
 
-  //edit = () => myEvents.emit('MyEvent1',5);
   
 
   constructor(props) {

@@ -53,11 +53,6 @@ export default class List extends PureComponent{
   }
 
   filter(){
-    // if(!this.state.filter || this.state.filter == 'all') return this.state.clients
-
-    // if(this.state.filter === 'active'){
-    //   return this.state.clients.filter(el => el.balance > 0)
-    // }
 
     switch(this.state.filter){
       case null:
@@ -78,7 +73,6 @@ export default class List extends PureComponent{
     console.log('render <List>', this.state)
 
     return(
-      <>
 
       <table>
         <thead>
@@ -92,14 +86,15 @@ export default class List extends PureComponent{
             
           </tr>
         </thead>
+        
         <tbody>
           {
             this.filter().map(client => <Client client={client} key={client.id}/>) 
           }
         </tbody>
+      
       </table>
 
-      </>
    
       
       
