@@ -1,0 +1,24 @@
+body{
+  background-color: #efefef;
+}
+#root{
+  margin: 10vh auto;
+  width: 450px;
+  box-shadow: 0 3px 6px #223ad429, 0 3px 6px #08316b91;
+  padding: 2rem;
+  background-color: #fff;
+}
+
+.controls{
+  display: flex;
+  align-items: center;
+  gap: 10px
+}
+
+ul.list{
+  list-style: none;
+  padding-left: 30px;
+  height: 100px;
+  overflow-y: auto;
+  width: 240px;
+}
