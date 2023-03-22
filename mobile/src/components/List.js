@@ -1,13 +1,13 @@
-import { Component } from "react"
+import { PureComponent } from "react";
 import Client from "./Client"
 import {EventEmitter} from 'events';
-import Filter from './Filter'
+
 
 
 export let myEvents=new EventEmitter();
 
 
-export default class List extends Component{
+export default class List extends PureComponent{
 
   componentDidMount(){
     
@@ -43,11 +43,33 @@ export default class List extends Component{
       })
     })
 
+    myEvents.addListener("filter", status => this.setState({filter: status}))
 
   }
   
   state = {
-    clients: this.props.clients
+    clients: this.props.clients,
+    filter: null
+  }
+
+  filter(){
+    // if(!this.state.filter || this.state.filter == 'all') return this.state.clients
+
+    // if(this.state.filter === 'active'){
+    //   return this.state.clients.filter(el => el.balance > 0)
+    // }
+
+    switch(this.state.filter){
+      case null:
+      case 'all':
+        return this.state.clients
+      case 'active':
+        return this.state.clients.filter(el => el.balance > 0)
+      case 'blocked':
+        return this.state.clients.filter(el => el.balance <= 0)
+      default:
+        return this.state.clients    
+    }
   }
 
   
@@ -57,7 +79,6 @@ export default class List extends Component{
 
     return(
       <>
-      <Filter stateClients = {this.state.clients} {...this.props}/>
 
       <table>
         <thead>
@@ -72,7 +93,9 @@ export default class List extends Component{
           </tr>
         </thead>
         <tbody>
-          {this.state.clients.map(client => <Client client={client} key={client.id}/>) }
+          {
+            this.filter().map(client => <Client client={client} key={client.id}/>) 
+          }
         </tbody>
       </table>
 

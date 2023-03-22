@@ -1,13 +1,16 @@
 import { Component } from "react";
+import { myEvents } from "./List";
 
-export default class Filter extends Component{
+export default class Filter extends Component {
+
+  
   render(){
 
     return(
       <div className="filter">
-        <button>Все</button>
-        <button>Активные</button>
-        <button>Заблокированные</button>
+        <button onClick={()=>myEvents.emit('filter', 'all')}>Все</button>
+        <button onClick={()=>myEvents.emit('filter', 'active')}>Активные</button>
+        <button onClick={()=>myEvents.emit('filter', 'blocked')}>Заблокированные</button>
       </div>
     )
   }
