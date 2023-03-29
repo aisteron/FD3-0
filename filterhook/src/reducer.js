@@ -1,4 +1,5 @@
 import React from "react";
+import {useReducer} from 'react'
 export const ContextApp = React.createContext();
 
 var list = ['california', 'everything', 'aboveboard', 'washington', 'basketball', 'weathering', 'characters', 'literature', 'contraband', 'appreciate'];
@@ -25,3 +26,8 @@ export const testReducer = (state, action) => {
 				return state
     }
 };
+
+export const FilterProvider = ({children}) =>{
+  const [state, dispatch] = useReducer(testReducer, initialState);
+  return <ContextApp.Provider value={{dispatch, state}}>{children}</ContextApp.Provider>;
+}
