@@ -1,22 +1,15 @@
-import { useEffect, useState } from 'react'
-import './style.css'
-import { Paginator } from './Paginator'
+import { useSearchParams } from "react-router-dom"
+import { List } from "./List";
+import { Paginator } from "./Paginator";
 
 export const PagePagination = () =>{
-
-	const[,setPage] = useState('')
-	
-	
-	useEffect(()=>{
-			// useParams() не работает с option parameter
-			let page = new URLSearchParams(window.location.search).get("page")
-			page && setPage(page)
-		},[setPage])
-
-    return(
-			<>
-				<Paginator cbSetPage={setPage}/>
-        <p>Page Pagination</p>
-			</>	
-    )
+  let [searchParams, setSearchParams] = useSearchParams();
+  //console.log(searchParams.get('page'))
+  
+  return(
+    <>
+      <Paginator cbSetPage={setSearchParams} page={searchParams.get('page')}/>
+      <List/>
+    </>
+  )
 }
