@@ -1,0 +1,33 @@
+table.list {
+	border-collapse: collapse;
+
+}
+table.list thead{
+	background-color: #eee;
+}
+table.list tr td {
+	border: 1px solid #333;
+	padding: 3px;
+}
+
+.tools{
+	background-color: #eee;
+	padding: 5px;
+	margin-bottom: 1rem;
+}
+
+section{
+	display: flex;
+	justify-content: space-between;
+}
+aside form fieldset{
+	border-color: #fff;
+}
+aside form input{
+	display: block;
+	margin-bottom: 1rem;
+	padding: 5px;
+}
+aside form input:last-of-type{
+	margin-bottom: 0;
+}
