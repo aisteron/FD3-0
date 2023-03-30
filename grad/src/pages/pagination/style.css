@@ -10,7 +10,36 @@ nav ul li {
 	background-color: #eee;
 	padding: 10px;
 	cursor: pointer;
+  border: 1px solid transparent
 }
+
 nav ul li:hover{
 	background-color: #ccc;
+}
+
+nav ul li.current_page {
+  border-color: #333
+}
+
+nav ul li.disabled {
+  color: #b9b9b9;
+  background-color: #f4f4f4;
+  cursor: not-allowed;
+}
+
+ul.list {
+  list-style: none;
+  padding: 0;
+  width: 360px;
+}
+ul.list li {
+  display: flex;
+  justify-content: space-between;
+}
+
+ul.list li .name {
+  flex-grow: 1;
+  text-align: left;
+  display: inline-block;
+  margin-left: 1rem;
 }

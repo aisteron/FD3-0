@@ -3,13 +3,13 @@ import { List } from "./List";
 import { Paginator } from "./Paginator";
 
 export const PagePagination = () =>{
-  let [searchParams, setSearchParams] = useSearchParams();
-  //console.log(searchParams.get('page'))
+  let [searchParams, ] = useSearchParams();
+ 
   
   return(
     <>
-      <Paginator cbSetPage={setSearchParams} page={searchParams.get('page')}/>
-      <List/>
+      <Paginator page={searchParams.get('page')}/>
+      <List page={searchParams.get('page')}/>
     </>
   )
 }

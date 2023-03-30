@@ -28,6 +28,23 @@ aside form input{
 	margin-bottom: 1rem;
 	padding: 5px;
 }
+aside form input[type="text"]{
+  border: none;
+  border-bottom: 1px solid #959595;
+  padding-left: 0;
+}
+aside form input[type="text"]:focus{
+  outline: none;
+  background-color: #eee;
+}
 aside form input:last-of-type{
 	margin-bottom: 0;
+}
+
+.navlinks a{
+  color: #333;
+}
+.navlinks a.active {
+  text-decoration: none;
+  color: red
 }
