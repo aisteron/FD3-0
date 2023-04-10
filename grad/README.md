@@ -1,70 +1,26 @@
-# Getting Started with Create React App
+## npm run dev
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Описание
 
-## Available Scripts
+3 компонента (50 товаров, пагинация, корзина) обернуты redux-ом
 
-In the project directory, you can run:
+### 50 товаров
+Она же индексная страница. Использует редаксовский стейт, чтобы отображать товары, сортировать, добавлять, удалять и добавлять в корзину. (которая просто пока поле в стейте)
 
-### `npm start`
+### Пагинация
+Этот компонент использует редакс стейт для хранения номера страницы. Кол-во товаров на странице и общее кол-во товаров захардкожены пока.
+Функция отображения пагинации написано мозголомно ручками.
+Товары в стейте не хранятся, смысла нет.
+Компоненту списка товаров передается номер страницы
+Как и компоненту пагинатору, что рисует пагинацию.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Пагинация по клику дергает navigate и передает туда номер страницы.
+Это вызывает перерендер компонента.
+Тут мы его ловим, достаем через searchParams номер страницы и диспатчим его в стейт.
+А компоненты Список и Пагинатор, слыша, что поле в стейте поменялось, соответственно реагируют:
+Пагинатор рисует пагинацию. А список дергает сервер.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Не уверен, что здесь нужен редакс. Наверно, хватило бы и локального стейта
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### Корзина
+Просто рисует список товаров из редакс стейта и считает сумму
