@@ -9,7 +9,6 @@ export const Paginator = () =>{
 
   const navigate = useNavigate();
 	const page_s = useSelector((state) => state.pagination.page)
-
   return(
     <>
     	{create_obj(navigate, page_s, 10,93)}
@@ -18,6 +17,7 @@ export const Paginator = () =>{
 }
 
 function create_obj(navigate,page, per_page, total_goods){
+
   !page ? page=1: page = +page
   let last_page = Math.ceil(total_goods/per_page)
 

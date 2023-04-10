@@ -3,7 +3,8 @@ import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
   goods:[],
-	cart: []
+	cart: [],
+	sort: null
 }
 
 export const goods50Slice = createSlice({
@@ -27,10 +28,29 @@ export const goods50Slice = createSlice({
 		},
 		to_cart:(state, action) => {
 			state.cart.push(action.payload)
+		},
+		sort:(state)=>{
+			switch(state.sort){
+				case null:
+					state.sort = 'asc'
+					state.goods.sort((a,b)=>a.price - b.price)
+					break;
+				case 'asc':
+					state.sort = 'desc'
+					state.goods.sort((a,b)=>b.price - a.price)
+					break;
+				case 'desc':
+					state.sort = null
+					state.goods.sort((a,b)=>a.id - b.id)
+					break;
+				default:
+					state.sort = null
+
+			}
 		}
   },
 })
 
-export const { setGoods, remove, add, to_cart } = goods50Slice.actions
+export const { setGoods, remove, add, to_cart, sort } = goods50Slice.actions
 
 export default goods50Slice.reducer

@@ -16,6 +16,9 @@ table.list tr td:last-of-type span {
 table.list tr td:last-of-type span:hover{
 	text-decoration: none;
 }
+table.list tr td:last-of-type span.green{
+	color: green
+}
 .tools{
 	background-color: #eee;
 	padding: 5px;
@@ -28,6 +31,17 @@ table.list tr td:last-of-type span:hover{
 
 .tools >span:after{
 	content: '⇵';
+	position: absolute;
+	top: 2px;
+	right: -20px
+}
+.tools >span.asc:after{
+	content: '↑';
+	color: red
+}
+.tools >span.desc:after{
+	content: '↓';
+	color: red
 }
 .tools >span:hover {
 	color: red
