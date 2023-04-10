@@ -1,26 +1,23 @@
 import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux'
+
 import './style.css';
 
-import { useSelector, useDispatch } from 'react-redux'
-import { nav } from '../../store/paginationSlice'
 
-export const Paginator = ({page}) =>{
+
+export const Paginator = () =>{
 
   const navigate = useNavigate();
-
-	const nv = useSelector((state) => state.nav)
-  const dispatch = useDispatch()
+	const page_s = useSelector((state) => state.pagination.page)
 
   return(
     <>
-		{console.log(nv)}
-    {create_obj(dispatch,navigate, page, 10,93)}
-
+    	{create_obj(navigate, page_s, 10,93)}
     </>
   )
 }
 
-function create_obj(dispatch,navigate,page, per_page, total_goods){
+function create_obj(navigate,page, per_page, total_goods){
   !page ? page=1: page = +page
   let last_page = Math.ceil(total_goods/per_page)
 
@@ -86,10 +83,10 @@ function create_obj(dispatch,navigate,page, per_page, total_goods){
 
   return(
 		<>
-		<p onClick={()=>dispatch(nav, "1")}>test</p> 
+
     <nav>
     <ul>
-      {/* { && <li className="first_page" onClick={()=>navigate("/pagination")}>&lt;</li>} */}
+
       <li 
         className={!obj.first_page ? "disabled first_page" :"first_page"} 
         onClick={()=>obj.first_page && navigate("/pagination")}>&lt;</li>

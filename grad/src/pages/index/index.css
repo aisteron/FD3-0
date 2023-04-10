@@ -9,11 +9,28 @@ table.list tr td {
 	border: 1px solid #333;
 	padding: 3px;
 }
-
+table.list tr td:last-of-type span {
+	text-decoration: underline;
+	cursor: pointer
+}
+table.list tr td:last-of-type span:hover{
+	text-decoration: none;
+}
 .tools{
 	background-color: #eee;
 	padding: 5px;
 	margin-bottom: 1rem;
+}
+.tools >span {
+	position: relative;
+	cursor: pointer;
+}
+
+.tools >span:after{
+	content: '⇵';
+}
+.tools >span:hover {
+	color: red
 }
 
 section{
