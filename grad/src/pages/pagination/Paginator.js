@@ -1,5 +1,4 @@
-import { useNavigate } from 'react-router-dom';
-import { useSelector } from 'react-redux'
+import { useNavigate, useSearchParams } from 'react-router-dom';
 
 import './style.css';
 
@@ -8,10 +7,13 @@ import './style.css';
 export const Paginator = () =>{
 
   const navigate = useNavigate();
-	const page_s = useSelector((state) => state.pagination.page)
-  return(
+
+	let [searchParams, ] = useSearchParams();
+	let page = +searchParams.get('page')
+  
+	return(
     <>
-    	{create_obj(navigate, page_s, 10,93)}
+    	{create_obj(navigate, page, 10,93)}
     </>
   )
 }

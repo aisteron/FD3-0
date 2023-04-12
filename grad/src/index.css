@@ -2,6 +2,17 @@
   margin: 10vh auto;
   width: 800px;
 }
+@media(max-width: 800px){
+	#root{
+		width: 100%;
+	}
+}
+@media(max-width: 650px){
+	section{
+		flex-direction: column-reverse;
+		gap: 1rem
+	}
+}
 
 .navlinks{
   background-color: #eee;

@@ -15,12 +15,12 @@ export const ListItem = ({item}) => {
 	return(
 		<tr>
 			<td>{item.name}</td>
-			<td>{item.upc}</td>
+			<td className='upc'>{item.upc}</td>
 			<td>{item.price}</td>
 			<td>
 				<span onClick={()=> dispatch(remove(item.id))}>remove </span>
 				| 
-				<span onClick={() => dispatch(to_cart(item))} className={check()}> {check() == 'green' ? 'in cart' : 'add to cart'}</span>
+				<span onClick={() => dispatch(to_cart(item))} className={check()}> {check() === 'green' ? 'in cart' : 'add to cart'}</span>
 				</td>
 		</tr>
 	)

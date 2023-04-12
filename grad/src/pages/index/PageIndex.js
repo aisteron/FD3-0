@@ -1,9 +1,11 @@
-import { useEffect, useState } from "react"
+import { useEffect} from "react"
 import { ListItem } from "./ListItem"
 import { Form } from "./Form"
 import './index.css'
 import { setGoods,sort } from '../../store/goods50Slice'
 import { useSelector, useDispatch } from 'react-redux'
+
+import { CSSTransitionGroup } from 'react-transition-group'
 
 
 export const PageIndex = () => {
@@ -13,7 +15,7 @@ export const PageIndex = () => {
 		const dispatch = useDispatch()
 
     useEffect(()=>{
-
+			
 			const fetchData = async () => {
 				const response = await fetch('http://localhost:3001/products?_limit=50')
 				const data = await response.json()  
@@ -21,6 +23,7 @@ export const PageIndex = () => {
 			}
 
 			fetchData().catch(console.error);
+			// eslint-disable-next-line react-hooks/exhaustive-deps
     },[])
 
 
@@ -37,14 +40,20 @@ export const PageIndex = () => {
 							<thead>
 								<tr>
 									<td>name</td>
-									<td>upc</td>
+									<td className="upc">upc</td>
 									<td>price</td>
 									<td></td>
 								</tr>
 							</thead>
-							<tbody>
+							
+							<CSSTransitionGroup
+								transitionName="example"
+								component="tbody"
+								transitionEnterTimeout={500}
+								transitionLeaveTimeout={300}>
 								{goods.map(item => <ListItem item={item} key={item.id}/>)}
-							</tbody>
+								</CSSTransitionGroup>	
+							
 						</table>
 
 						<aside>
