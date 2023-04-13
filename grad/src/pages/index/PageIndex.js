@@ -17,7 +17,7 @@ export const PageIndex = () => {
     useEffect(()=>{
 			
 			const fetchData = async () => {
-				const response = await fetch('http://localhost:3001/products?_limit=50')
+				const response = await fetch('https://6437cd07894c9029e8c6543c.mockapi.io/products?limit=50')
 				const data = await response.json()  
 				dispatch(setGoods(data))
 			}

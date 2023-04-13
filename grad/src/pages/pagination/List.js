@@ -14,7 +14,7 @@ export const List = () => {
   useEffect(()=>{
 
     const getData = async () => {
-      let response = await fetch(`http://localhost:3001/products?_limit=10${page ? '&_page='+page: ''}`)
+      let response = await fetch(`https://6437cd07894c9029e8c6543c.mockapi.io/products?limit=10&page=${page ? page : 1}`)
       setData(await response.json())
     }
 

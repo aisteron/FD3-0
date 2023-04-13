@@ -1,9 +1,12 @@
 import { render, unmountComponentAtNode } from "react-dom";
 import { act } from "react-dom/test-utils";
+import '@testing-library/jest-dom'
+
 import { PageIndex } from "./PageIndex";
 
 import { store } from '../../store/store'
 import { Provider } from 'react-redux'
+
 
 
 let container = null;
@@ -41,8 +44,6 @@ it("render 50 goods", async () => {
   });
 
   expect(container.querySelector("tbody .upc").textContent).toBe(fakeData[0].upc);
-
-
-  // выключаем фиктивный fetch, чтобы убедиться, что тесты полностью изолированы
   global.fetch.mockRestore();
+
 });
